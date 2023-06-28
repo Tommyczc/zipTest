@@ -23,15 +23,21 @@ def getFilesName(path):
     exportFile = pd.DataFrame(fileNames)
     # exportFile.to_csv("lala.csv",index=False)
     # print("lalal")
-    print(exportFile)
     return exportFile
 
 def unZipFiles(fileName,startPath,endPath):
     fileName=fileName.replace(".zip","").replace(".tar","")
     f = zipfile.ZipFile(startPath, 'r')  # 压缩文件位置
-    print(type(f))
-    for file in f.namelist():
-        f.extract(file, endPath)  # 解压位置
+
+    if len(f.namelist()) ==1: #替换名字
+        finalPathName=f.extract(f.namelist()[0], endPath)
+        portion = os.path.splitext(finalPathName)
+        print(finalPathName)
+        os.rename(finalPathName, str(endPath)+"/"+fileName+portion[1])
+    else:
+        for file in f.namelist():
+            f.extract(file, endPath)  # 解压位置
+
     f.close()
 
 
