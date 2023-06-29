@@ -32,7 +32,7 @@ def unZipFiles(fileName,startPath,endPath):
     if len(f.namelist()) ==1: #替换名字
         finalPathName=f.extract(f.namelist()[0], endPath)
         portion = os.path.splitext(finalPathName)
-        print(portion)
+        # print(portion)
         os.rename(finalPathName, str(endPath)+"/"+fileName+portion[1])
 
     elif len(f.namelist())==0:
