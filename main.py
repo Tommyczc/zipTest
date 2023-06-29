@@ -32,11 +32,17 @@ def unZipFiles(fileName,startPath,endPath):
     if len(f.namelist()) ==1: #替换名字
         finalPathName=f.extract(f.namelist()[0], endPath)
         portion = os.path.splitext(finalPathName)
-        print(finalPathName)
+        print(portion)
         os.rename(finalPathName, str(endPath)+"/"+fileName+portion[1])
+
+    elif len(f.namelist())==0:
+        print("{} 该压缩包无文件，已跳过解压".format(fileName))
+
     else:
         for file in f.namelist():
-            f.extract(file, endPath)  # 解压位置
+            theName=f.extract(file, endPath)  # 解压位置
+            portion = os.path.splitext(theName)
+            os.rename(theName, str(endPath) + "/" + fileName+"_"+str(portion[0]).split("/")[-1]+ portion[1])
 
     f.close()
 
