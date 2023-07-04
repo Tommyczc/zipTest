@@ -54,8 +54,8 @@ def unZipAll(dir,desPath):
 
 # 按间距中的绿色按钮以运行脚本。
 if __name__ == '__main__':
-    zipFiles="zipFiles" # 这个路径是压缩包的文件路径
-    unZipFilesDir="unZipFiles"# 这个是指定的解压路径
+    zipFiles="/Users/czc/PycharmProjects/zipTest/zipFiles" # 这个路径是压缩包的文件路径
+    unZipFilesDir="/Users/czc/PycharmProjects/zipTest/unZipFiles"# 这个是指定的解压路径
 
     if not os.path.exists(unZipFilesDir):
         os.makedirs(unZipFilesDir)
